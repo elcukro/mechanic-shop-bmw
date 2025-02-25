@@ -3,9 +3,12 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <header className="bg-primary text-white shadow-md m-stripe">
@@ -19,54 +22,60 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex gap-6">
-            <Link href="/" className="hover:text-accent transition-colors">
-              Home
-            </Link>
-            <Link href="/services" className="hover:text-accent transition-colors">
-              Services
-            </Link>
-            <Link href="/faq" className="hover:text-accent transition-colors">
-              FAQ
-            </Link>
-            <Link href="/about" className="hover:text-accent transition-colors">
-              About Us
-            </Link>
-            <Link href="/contact" className="hover:text-accent transition-colors">
-              Contact
-            </Link>
-          </nav>
+          <div className="hidden md:flex items-center gap-6">
+            <nav className="flex gap-6">
+              <Link href="/" className="hover:text-accent transition-colors">
+                {t('home')}
+              </Link>
+              <Link href="/services" className="hover:text-accent transition-colors">
+                {t('services')}
+              </Link>
+              <Link href="/faq" className="hover:text-accent transition-colors">
+                {t('faq')}
+              </Link>
+              <Link href="/about" className="hover:text-accent transition-colors">
+                {t('about')}
+              </Link>
+              <Link href="/contact" className="hover:text-accent transition-colors">
+                {t('contact')}
+              </Link>
+            </nav>
+            <LanguageSwitcher />
+          </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="w-6 h-6"
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageSwitcher />
+            <button
+              className="text-white"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
             >
-              {isMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                {isMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -77,35 +86,35 @@ export default function Header() {
               className="hover:text-accent transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Home
+              {t('home')}
             </Link>
             <Link
               href="/services"
               className="hover:text-accent transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Services
+              {t('services')}
             </Link>
             <Link
               href="/faq"
               className="hover:text-accent transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              FAQ
+              {t('faq')}
             </Link>
             <Link
               href="/about"
               className="hover:text-accent transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              About Us
+              {t('about')}
             </Link>
             <Link
               href="/contact"
               className="hover:text-accent transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Contact
+              {t('contact')}
             </Link>
           </nav>
         )}

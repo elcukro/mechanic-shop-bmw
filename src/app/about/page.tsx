@@ -1,16 +1,20 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 export default function AboutPage() {
+  const { t } = useLanguage();
+  
   return (
     <div>
       {/* About Header */}
       <section className="bg-primary text-white py-20 m-stripe">
         <div className="container-custom text-center pt-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">About <span className="text-accent">M</span>echanic <span className="text-mblue">P</span>ro</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('aboutTitle')} <span className="text-accent">M</span>echanic <span className="text-mblue">P</span>ro</h1>
           <p className="text-lg max-w-2xl mx-auto">
-            Professional automotive specialists with a passion for excellence in 
-            specialized repairs and maintenance.
+            {t('aboutSubtitle')}
           </p>
         </div>
       </section>

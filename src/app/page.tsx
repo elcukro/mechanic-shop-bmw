@@ -1,7 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 export default function Home() {
+  const { t } = useLanguage();
+  
   return (
     <div>
       {/* Hero Section */}
@@ -14,15 +19,14 @@ export default function Home() {
                 <span className="text-mblue">Expert</span> Service
               </h1>
               <p className="text-lg mb-6">
-                Specialized in injector regeneration, DPF filter cleaning, turbo repairs, 
-                engine work, and comprehensive maintenance services.
+                {t('heroSubtitle')}
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link href="/contact" className="btn">
-                  Book an Appointment
+                  {t('ctaButton')}
                 </Link>
                 <Link href="/services" className="btn-outline">
-                  Our Services
+                  {t('services')}
                 </Link>
               </div>
             </div>
@@ -43,7 +47,7 @@ export default function Home() {
       {/* Featured Services */}
       <section className="py-16 bg-gray-100">
         <div className="container-custom">
-          <h2 className="text-3xl font-bold text-center text-primary mb-12">Our Specialized Services</h2>
+          <h2 className="text-3xl font-bold text-center text-primary mb-12">{t('servicesTitle')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Service 1 */}
             <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
@@ -52,7 +56,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-center mb-2 text-gray-800">Injector Regeneration</h3>
+              <h3 className="text-xl font-semibold text-center mb-2 text-gray-800">{t('injectorService')}</h3>
               <p className="text-gray-600 text-center">
                 Restore efficiency and performance with our expert injector regeneration service.
               </p>
@@ -65,7 +69,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-center mb-2 text-gray-800">DPF Filter Cleaning</h3>
+              <h3 className="text-xl font-semibold text-center mb-2 text-gray-800">{t('dpfService')}</h3>
               <p className="text-gray-600 text-center">
                 Extend the life of your diesel particulate filter with our professional cleaning service.
               </p>
@@ -78,7 +82,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-center mb-2 text-gray-800">Turbo Repairs</h3>
+              <h3 className="text-xl font-semibold text-center mb-2 text-gray-800">{t('turboService')}</h3>
               <p className="text-gray-600 text-center">
                 Restore power and efficiency with our comprehensive turbocharger repair services.
               </p>
@@ -91,7 +95,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-center mb-2 text-gray-800">Engine Repairs</h3>
+              <h3 className="text-xl font-semibold text-center mb-2 text-gray-800">{t('engineService')}</h3>
               <p className="text-gray-600 text-center">
                 From minor fixes to complete rebuilds, trust our experts with your engine repairs.
               </p>
@@ -99,7 +103,7 @@ export default function Home() {
           </div>
           <div className="text-center mt-12">
             <Link href="/services" className="btn-secondary">
-              View All Services
+              {t('services')}
             </Link>
           </div>
         </div>

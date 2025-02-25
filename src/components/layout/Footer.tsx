@@ -1,6 +1,11 @@
+'use client';
+
 import Link from 'next/link';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
+  
   return (
     <footer className="bg-primary text-white py-8 m-stripe">
       <div className="container-custom pt-6">
@@ -20,27 +25,27 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link href="/" className="hover:text-accent transition-colors">
-                  Home
+                  {t('home')}
                 </Link>
               </li>
               <li>
                 <Link href="/services" className="hover:text-accent transition-colors">
-                  Services
+                  {t('services')}
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="hover:text-accent transition-colors">
-                  About Us
+                  {t('about')}
                 </Link>
               </li>
               <li>
                 <Link href="/faq" className="hover:text-accent transition-colors">
-                  FAQ
+                  {t('faq')}
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-accent transition-colors">
-                  Contact
+                  {t('contact')}
                 </Link>
               </li>
             </ul>
@@ -59,7 +64,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-700 mt-8 pt-6 text-center">
           <p>
-            &copy; {new Date().getFullYear()} <span className="text-accent">M</span>echanic <span className="text-mblue">P</span>ro. All rights reserved.
+            {t('copyright')}
           </p>
         </div>
       </div>

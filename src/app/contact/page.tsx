@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 // Car make, model, and engine data
 const carData = {
@@ -65,6 +66,7 @@ const carData = {
 };
 
 export default function ContactPage() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -153,9 +155,9 @@ export default function ContactPage() {
       {/* Contact Header */}
       <section className="bg-primary text-white py-20 m-stripe">
         <div className="container-custom text-center pt-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact <span className="text-accent">M</span>echanic <span className="text-mblue">P</span>ro</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('contactTitle')} <span className="text-accent">M</span>echanic <span className="text-mblue">P</span>ro</h1>
           <p className="text-lg max-w-2xl mx-auto">
-            Get in touch for appointments, questions, or to discuss your vehicle's needs.
+            {t('contactSubtitle')}
           </p>
         </div>
       </section>
@@ -266,7 +268,7 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block text-gray-700 font-medium mb-2">Full Name</label>
+                  <label htmlFor="name" className="block text-gray-700 font-medium mb-2">{t('nameLabel')}</label>
                   <input
                     type="text"
                     id="name"
@@ -280,7 +282,7 @@ export default function ContactPage() {
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block text-gray-700 font-medium mb-2">Email Address</label>
+                  <label htmlFor="email" className="block text-gray-700 font-medium mb-2">{t('emailLabel')}</label>
                   <input
                     type="email"
                     id="email"
@@ -294,7 +296,7 @@ export default function ContactPage() {
 
                 {/* Phone */}
                 <div>
-                  <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">Phone Number</label>
+                  <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">{t('phoneLabel')}</label>
                   <input
                     type="tel"
                     id="phone"
@@ -488,7 +490,7 @@ export default function ContactPage() {
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-gray-700 font-medium mb-2">Message</label>
+                  <label htmlFor="message" className="block text-gray-700 font-medium mb-2">{t('messageLabel')}</label>
                   <textarea
                     id="message"
                     name="message"
@@ -505,7 +507,7 @@ export default function ContactPage() {
                   type="submit"
                   className="btn w-full"
                 >
-                  Send Message
+                  {t('submitButton')}
                 </button>
               </form>
             </div>

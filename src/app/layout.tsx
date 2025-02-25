@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { Analytics } from '@vercel/analytics/react';
+import { LanguageProvider } from '@/lib/i18n/LanguageContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,14 +19,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="pl">
       <body className={inter.className}>
-        <Header />
-        <main className="min-h-screen pb-16">
-          {children}
-        </main>
-        <Footer />
-        <Analytics />
+        <LanguageProvider>
+          <Header />
+          <main className="min-h-screen pb-16">
+            {children}
+          </main>
+          <Footer />
+          <Analytics />
+        </LanguageProvider>
       </body>
     </html>
   );
