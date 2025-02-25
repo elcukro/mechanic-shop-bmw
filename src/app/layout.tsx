@@ -3,12 +3,13 @@ import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Auto Service Pro - Specialized Mechanic Shop',
-  description: 'Expert automotive repairs specializing in injector regeneration, DPF filter cleaning, turbo repairs, engine work, and general maintenance.',
+  title: 'Mechanic Pro - BMW M Performance Specialists',
+  description: 'Expert automotive repairs specializing in BMW M Performance, injector regeneration, DPF filter cleaning, turbo repairs, engine work, and performance tuning.',
 };
 
 export default function RootLayout({
@@ -24,6 +25,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
